@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Movie_theaters.Models.CinemaHallModel>
+
+@{
+    ViewBag.Title = "ListCinemaHall";
+}
+
+<h2>ListCinemaHall</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddCinemaHall")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Theater.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountPlaces)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountRows)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Theater.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Number)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CountPlaces)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CountRows)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "EditCinemaHall", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "DeleteCinemaHall", new { id = item.Id })
+    </td>
+</tr>
+}
+
+</table>

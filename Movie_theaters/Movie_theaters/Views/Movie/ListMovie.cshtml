@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Movie_theaters.Models.MovieModel>
+
+@{
+    ViewBag.Title = "ListMovie";
+}
+
+<h2>ListMovie</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddMovie")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AgeBracket)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genres)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgeBracket)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastDay)
+        </td>
+        <td>
+            @foreach (var genre in item.Genres)
+            { 
+                @genre.Name<br />
+            }
+            </td>
+        <td>
+            @Html.ActionLink("Add genre", "AddGenre", new { id = item.Id }) |
+            @Html.ActionLink("Edit", "EditMovie", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "DeleteMovie", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

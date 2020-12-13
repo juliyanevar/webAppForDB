@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Movie_theaters.Models.SeanceModel>
+
+@{
+    ViewBag.Title = "SeanceForTheater";
+}
+
+<h2>SeanceForTheater</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.ActionLink("Book ticket", "RedirectToBooking", new { id = item.Id }) 
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Back", "RedirectToTheaterList")
+</p>
