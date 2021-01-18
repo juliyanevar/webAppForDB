@@ -1,15 +1,12 @@
 use Movie_theaters;
 
 
-create view ListGenres as select [name] from genre;
-
-select * from ListGenres;
 
 create view Cinema as select m.Id, m.Name, m.Address, c.Number [Number of hall], c.Count_places, c.Count_rows, c.Count_places/c.Count_rows [Count places on rows] 
 	from Movie_theater m join Cinema_hall c 
 	on m.id=c.Movie_theater_id;
 
-	select * from movie
+	select * from Cinema
 
 
 
